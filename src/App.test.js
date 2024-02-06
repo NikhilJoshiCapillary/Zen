@@ -25,6 +25,14 @@ describe("All about home page", ()=>{
     expect(addingBtn).toBeInTheDocument()
   })
 
+  test(("check for all ui-elements-2"), ()=>{
+    initialProps();
+    const getInputBar = screen.getByTestId("input-bar")
+    const addingBtn = screen.getByTestId("add-btn")
+    expect(getInputBar).toBeInTheDocument()
+    expect(addingBtn).toBeInTheDocument()
+  })
+
 
 
   test("testing addition of a task", ()=>{
