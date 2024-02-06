@@ -71,3 +71,74 @@ describe("All about home page", ()=>{
   })
 
 })
+
+
+describe("Testing navbar", ()=>{
+  test("check for navbar ui-elements", () => {
+    render(
+      
+        <BrowserRouter>
+          <Navbar />
+        </BrowserRouter>
+  
+    );
+    const homeButton = screen.getByTestId("home-btn");
+    const aboutButton = screen.getByTestId("about-btn");
+    const contactButton = screen.getByTestId("contact-btn");
+    const getHeading = screen.getByText("Zen-Task Management App")
+    expect(homeButton).toBeInTheDocument();
+    expect(aboutButton).toBeInTheDocument();
+    expect(contactButton).toBeInTheDocument();
+    expect(getHeading).toBeInTheDocument();
+  });
+
+
+  test("Testing add-task reducer", ()=>{
+    const initial_state = {
+      array: [],
+    };
+    const action = {type:"CREATE_TASK", payload:"Go to the mall"}
+    const new_state = globalReducer(initial_state, action).array
+    expect(new_state).toHaveLength(1);
+  })
+
+  test("Testing remove-task reducers", ()=>{
+    const initial_state = {
+      array: ["Go to the mall"]
+    };
+    const action = {type:"REMOVE_TASK", payload:0}
+    const new_state = globalReducer(initial_state, action).array
+    expect(new_state).toHaveLength(0);
+  })
+
+
+  test("Testing random-type reducers", ()=>{
+    const initial_state = {
+      array: []
+    };
+    const action = {type:"RANDOM"}
+    const new_state = globalReducer(initial_state, action).array
+    expect(new_state).toHaveLength(0);
+  })
+
+
+
+})
+
+
+describe("Testing the router", ()=>{
+
+  test("checking route from Home to About",async()=>{
+    render(
+      <BrowserRouter>
+        <Navbar />
+      </BrowserRouter>
+    )
+    const aboutButton = screen.getByTestId("about-btn");
+    expect(aboutButton).toBeInTheDocument()
+    fireEvent.click(aboutButton);
+    const text = await screen.findByTestId("about-text");
+    expect(text).toBeInTheDocument()
+
+  })
+})
