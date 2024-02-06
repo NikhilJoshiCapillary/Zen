@@ -81,6 +81,7 @@ function Todos() {
               <button
                 className="edit-task-btn"
                 onClick={() => toggleVisibility(index)}
+                data-testid="edit-btn"
               >
                 Edit Task
               </button>

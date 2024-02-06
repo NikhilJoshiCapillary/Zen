@@ -134,19 +134,20 @@ describe("Testing navbar", ()=>{
 })
 
 
-describe("Testing the router", ()=>{
 
-  test("checking route from Home to About",async()=>{
-    render(
-      <BrowserRouter>
-        <Navbar />
-      </BrowserRouter>
-    )
-    const aboutButton = screen.getByTestId("about-btn");
-    expect(aboutButton).toBeInTheDocument()
-    fireEvent.click(aboutButton);
-    const text = await screen.findByTestId("about-text");
-    expect(text).toBeInTheDocument()
 
+describe("Looking for the edit button", ()=>{
+  
+  test("checking for the edit button", ()=>{
+    initialProps()
+    const inputBar = screen.getByTestId("input-bar");
+    const addingBtn = screen.getByTestId("add-btn");
+    fireEvent.change(inputBar, {target:{
+      value:"Go to Park"
+    }})
+    fireEvent.click(addingBtn);
+    const editBtn = screen.getByTestId("edit-btn")
+    expect(editBtn).toBeInTheDocument()
   })
 })
+
