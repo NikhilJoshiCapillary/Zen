@@ -36,3 +36,39 @@
     transform: rotate(360deg);
   }
 }
+
+
+*{
+  background-color: #8ed1fc;;
+}
+
+.head-1{
+  height: 8rem;
+  width: 100%;
+}
+
+.nav{
+  display: inline-block;
+  margin-top: -2rem;
+  height: 10rem;
+  width: 100%;
+}
+
+.nav-btn{
+  width: 5rem;
+  height: 1.5rem;
+}
+
+ul{
+  list-style: none;
+  overflow: hidden;
+  
+}
+
+li{
+  display: inline-block;
+  padding:190px;
+  margin-top: -200px;
+}
+
+
